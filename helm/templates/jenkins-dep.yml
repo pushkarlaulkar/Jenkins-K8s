@@ -13,6 +13,8 @@ spec:
       labels:
         app: jenkins
     spec:
+      nodeSelector:
+        eks.amazonaws.com/compute-type: auto
       containers:
         - name: jenkins
           image: jenkins/jenkins:2.471-jdk17
