@@ -1,7 +1,7 @@
 Instructions to deploy **Jenkins** on AWS EKS Auto Mode
   1. Deploy EKS cluster through Auto Mode through AWS Console. Add the ` CoreDNS `, ` VPC CNI `, ` Kube Proxy ` add ons.
   2. Create a namespace. ` kubectl create ns jenkins `
-  3. DDeploy `PVC` & `Storage Class` using below `kubectl` command.
+  3. Deploy `PVC` & `Storage Class` using below `kubectl` command.
 
      `kubectl -n jenkins apply -f pvc.yml -f storage-class.yml`
   4. Deploy the `Jenkins` deployment & service using the below `kubectl` command.
