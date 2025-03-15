@@ -13,6 +13,8 @@ Instructions to deploy **Jenkins** on AWS EKS Auto Mode
   8. Point the domain name in Route 53 to the ALB as an A (alias) record.
   9. Access the app using `https://your_domain_name`.
 
+---------------------
+
 **Helm**
 To install this app using Helm, perform below steps
   1. Generate a certificate from ACM for your domain name. The certificate arn will be required in the next step since we are running ALB on port 443.
