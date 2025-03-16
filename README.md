@@ -23,4 +23,4 @@ To install this app using Helm, perform below steps
      `helm install jenkins ./helm --namespace jenkins --create-namespace --set certificate_arn=arn_got_from_previous_step`.
   4. Get the ALB DNS using `kubectl -n jenkins get ingress` and point the domain name in Route 53 to the ALB as an A (alias) record.
   5. Access the app using `https://your_domain_name`.
-  6. Uninstall the app using `helm unistall jenkins`.
+  6. Uninstall the app using `helm uninstall jenkins`.
