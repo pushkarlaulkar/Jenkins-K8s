@@ -1,5 +1,5 @@
 Instructions to deploy **Jenkins** on AWS EKS Auto Mode
-  1. Deploy EKS cluster through Auto Mode through AWS Console. Add the ` CoreDNS `, ` VPC CNI `, ` Kube Proxy `, `Amazon EBS CSI Driver` add ons. NAT Gateway is also needed since the worker nodes will be deployed in private subnets.
+  1. Deploy EKS cluster through Auto Mode through AWS Console. Add the ` CoreDNS `, ` VPC CNI `, ` Kube Proxy `, `Amazon EBS CSI Driver` add ons. **NAT Gateway** is also needed since the worker nodes will be deployed in private subnets.
   2. Create a namespace. ` kubectl create ns jenkins `
   3. Deploy **PVC** & **Storage Class** using below command.
 
@@ -16,6 +16,11 @@ Instructions to deploy **Jenkins** on AWS EKS Auto Mode
   7. Run ` kubectl -n jenkins get ingress ` to retrieve the ALB DNS.
   8. Point the domain name in Route 53 to the ALB as an A (alias) record.
   9. Access the app using ` https://your_domain_name `.
+ 10. To upgrade the application, first scale the deployment to 0, change the image and then apply the new deployment again.
+     ```
+     kubectl -n jenkins scale deployment jenkins --replicas=0
+     kubectl -n jenkins apply -f jenkins-dep.yml
+     ```
 
 ---------------------
 
