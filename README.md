@@ -56,5 +56,5 @@ To install this app using ArgoCD, perform below steps
   6. To get the initial admin user password run the command
 
      ```
-     kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode
+     kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode && echo
      ```
