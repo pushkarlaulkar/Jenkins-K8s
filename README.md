@@ -46,7 +46,7 @@ To install this app using ArgoCD, perform below steps
      ```
      kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
      ```
-  3. Create a certificate for the preferred ArgoCD domain name in ACM and put the arn of the certificate in ` argocd-ingress.yml ` & run
+  3. Create a certificate for the preferred ArgoCD domain name in ACM, perform DNS validation or Email validation, put the arn of the certificate in ` argocd-ingress.yml ` & run
 
      ```
      kubectl -n argocd apply -f argocd-ingress.yml
