@@ -41,7 +41,7 @@ To install this app using Helm, perform below steps
 **ArgoCD** installation
 To install this app using ArgoCD, perform below steps
   1. Create a namespace. ` kubectl create ns argocd `.
-  2. Apply ArgoCD manifest file
+  2. Apply **ArgoCD** manifest file
      
      ```
      kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -58,3 +58,30 @@ To install this app using ArgoCD, perform below steps
      ```
      kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode && echo
      ```
+
+-----------------------------
+
+**Prometheus** & **Grafana** monitoring
+
+To install the Prometheus stack, perform below steps
+   1. Apply the monitoring stack manifest
+
+      ```
+      helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+      helm repo update
+      helm install kube-prometheus prometheus-community/kube-prometheus-stack --create-namespace --namespace monitoring --set grafana.adminPassword='any_secure_password' --set grafana.service.type=ClusterIP
+      ```
+
+      ✅ This installs :- Prometheus, Grafana, Node Exporter, kube-state-metrics, Alertmanager
+
+   2. Create a certificate for the preferred Grafana domain name in ACM, perform DNS validation or Email validation, put the arn of the certificate in ` monitoring-ingress.yml ` & run
+
+      ```
+      kubectl -n monitoring apply -f monitoring-ingress.yml
+      ```
+   3. Access Grafana using ` https://grafana_domain_name `.
+   4. To get the initial admin user password run the command
+
+      ```
+      kubectl -n monitoring get secrets kube-prometheus-grafana -o jsonpath="{.data.admin-password}" | base64 -d ; echo
+      ```
