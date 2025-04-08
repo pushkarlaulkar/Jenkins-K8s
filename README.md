@@ -26,7 +26,7 @@ Instructions to deploy **Jenkins** on AWS EKS Auto Mode
 
 **Helm**
 To install this app using Helm, perform below steps
-  1. Generate a certificate from ACM for your domain name. The certificate arn will be required in the next step since we are running ALB on port 443.
+  1. Generate a certificate from ACM for your domain name. The certificate arn will be required in the next step since we are running ALB on port 443. Perform DNS validation or Email validation.
   2. Run the command
 
      ```
