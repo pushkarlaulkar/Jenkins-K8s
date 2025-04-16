@@ -26,4 +26,4 @@ jobs:
       - name: Render Helm templates and validate
         if: ${{ always() }}
         run: |
-          helm template whisper ./helm | kubeconform -strict -summary
+          helm template jenkins ./helm | kubeconform -strict -summary
